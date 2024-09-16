@@ -9,7 +9,7 @@ trigger:
 pool: default
 
 steps:
-- script: echo Hello, world!
+- script: ls -ltr
   displayName: 'Run a one-line '
 
 - task: Docker@2
