@@ -1,16 +1,12 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - new
 
-pool: default
+pool:
+  vmImage: 'ubuntu-latest'
 
 steps:
 - script: ls -ltr
-  displayName: 'Run a one-line '
+  displayName: 'List files in the working directory'
 
 - task: Docker@2
   inputs:
@@ -18,3 +14,17 @@ steps:
     repository: 'akshayasgo/nodetest'
     command: 'buildAndPush'
     Dockerfile: 'testapp/Dockerfile'
+    buildContext: 'testapp'
+    tags: '$(Build.BuildId)'  # Use the build ID as the tag
+  displayName: 'Build and Push Docker Image'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'webapp'
+    appType: 'webAppContainer'
+    WebAppName: 'kahsyate'
+    DockerNamespace: 'docker.io'
+    DockerRepository: 'akshayasgo/nodetest'
+    DockerImageTag: '$(Build.BuildId)'
+  displayName: 'Deploy to Azure Web App'
