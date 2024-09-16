@@ -17,4 +17,4 @@ steps:
     containerRegistry: 'dockerhub'
     repository: 'akshayasgo/nodetest'
     command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+    Dockerfile: 'testapp/Dockerfile'
