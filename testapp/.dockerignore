@@ -1,0 +1,32 @@
+# Node.js dependencies
+node_modules
+
+# Build output
+build
+
+# Docker-related files
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Git files
+.git
+.gitignore
+
+# IDE or editor files
+.vscode
+.idea
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variable files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
