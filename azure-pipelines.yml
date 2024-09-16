@@ -10,7 +10,7 @@ pool: default
 
 steps:
 - script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  displayName: 'Run a one-line '
 
 - task: Docker@2
   inputs:
