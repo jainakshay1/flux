@@ -9,8 +9,7 @@ steps:
 - task: SonarQubePrepare@6
   inputs:
     SonarQube: 'sonar'
-    scannerMode: 'MSBuild'
-    projectKey: 'sqa_09acd9c3be08c667936f915636d22a54456981b4'
+    scannerMode: 'Other'
 - task: SonarQubeAnalyze@6
   inputs:
     jdkversion: 'JAVA_HOME_17_X64'
