@@ -12,8 +12,8 @@ steps:
     SonarQube: 'sonar'  # Service connection name for SonarQube
     scannerMode: 'CLI'
     configMode: 'manual'
-    cliProjectKey: 'your-project-key'  # Replace with your SonarQube project key
-    cliProjectName: 'your-project-name'  # Replace with your SonarQube project name
+    cliProjectKey: 'cicd'  # Replace with your SonarQube project key
+    cliProjectName: 'cicds'  # Replace with your SonarQube project name
     cliSources: 'testapp'  # Directory containing the source code
     extraProperties: |
       sonar.exclusions=**/*.test.js
