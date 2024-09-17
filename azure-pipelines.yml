@@ -6,13 +6,29 @@ pool: default
 steps:
 - script: ls -ltr
   displayName: 'List files in the working directory'
+
 - task: SonarQubePrepare@6
   inputs:
-    SonarQube: 'sonar'
-    scannerMode: 'Other'
+    SonarQube: 'sonar'  # Service connection name for SonarQube
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'your-project-key'  # Replace with your SonarQube project key
+    cliProjectName: 'your-project-name'  # Replace with your SonarQube project name
+    cliSources: 'testapp'  # Directory containing the source code
+    extraProperties: |
+      sonar.exclusions=**/*.test.js
+  displayName: 'Prepare SonarQube Analysis'
+
+- task: SonarQubeAnalyze@6
+  displayName: 'Run SonarQube Analysis'
+
 - task: SonarQubePublish@6
   inputs:
-    pollingTimeoutSec: '300'
+    SonarQube: 'sonar'  # Service connection name for SonarQube
+    pollingTimeoutSec: '300'  # Time to wait for SonarQube analysis to complete
+  displayName: 'Publish SonarQube Quality Gate Result'
+
+# Uncomment and update the following steps as needed for Docker and Azure deployments
 
 # - task: Docker@2
 #   inputs:
