@@ -12,8 +12,8 @@ steps:
     SonarQube: 'sonar'  # Service connection name for SonarQube
     scannerMode: 'CLI'
     configMode: 'manual'
-    cliProjectKey: 'cicd'  # Replace with your SonarQube project key
-    cliProjectName: 'cicds'  # Replace with your SonarQube project name
+    cliProjectKey: 'cicds'  # Replace with your SonarQube project key
+    cliProjectName: 'cicd'  # Replace with your SonarQube project name
     cliSources: 'testapp'  # Directory containing the source code
     extraProperties: |
       sonar.exclusions=**/*.test.js
@@ -24,7 +24,6 @@ steps:
 
 - task: SonarQubePublish@6
   inputs:
-    SonarQube: 'sonar'  # Service connection name for SonarQube
     pollingTimeoutSec: '300'  # Time to wait for SonarQube analysis to complete
   displayName: 'Publish SonarQube Quality Gate Result'
 
