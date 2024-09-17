@@ -1,20 +1,22 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- new
+  - none
 
-pool: default
+pool:
+  default
 
 steps:
 - script: ls -ltr
-  displayName: 'Run a one-line '
+  displayName: 'List files in the working directory'
 
-- task: Docker@2
+- task: SonarQubePrepare@6
   inputs:
-    containerRegistry: 'dockerhub'
-    repository: 'akshayasgo/nodetest'
-    command: 'buildAndPush'
-    Dockerfile: 'testapp/Dockerfile'
+    SonarQube: 'sonar'
+    scannerMode: 'CLI'
+    configMode: 'project'  # Set configMode to 'project' to use the project-level configuration
+    cliProjectKey: 'cicd1'
+    cliProjectName: 'cicd1'
+    cliSources: 'testapp'
+
+- task: SonarQubeAnalyze@6
+  inputs:
+    jdkversion: 'JAVA_HOME_17_X64'
