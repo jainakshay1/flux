@@ -1,12 +1,14 @@
 trigger:
 - new
 
-pool:
-  vmImage: 'ubuntu-latest'
+pool: default
 
 steps:
 - script: ls -ltr
   displayName: 'List files in the working directory'
+- task: SonarQubeAnalyze@6
+  inputs:
+    jdkversion: 'JAVA_HOME_17_X64'
 
 - task: Docker@2
   inputs:
