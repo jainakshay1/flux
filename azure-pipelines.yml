@@ -12,10 +12,10 @@ steps:
   inputs:
     SonarQube: 'sonar'
     scannerMode: 'CLI'
-    configMode: 'project'  # Set configMode to 'project' to use the project-level configuration
+    configMode: 'manual'
     cliProjectKey: 'cicd1'
     cliProjectName: 'cicd1'
-    cliSources: 'testapp'
+    cliSources: '.'
 
 - task: SonarQubeAnalyze@6
   inputs:
