@@ -9,6 +9,7 @@ steps:
 
 - task: SonarQubePrepare@6
   inputs:
+    SonarQube: 'sonar'
     scannerMode: 'CLI'
     configMode: 'manual'
     cliProjectKey: 'cicds'
