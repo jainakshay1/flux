@@ -12,8 +12,8 @@ steps:
     SonarQube: 'sonar'
     scannerMode: 'CLI'
     configMode: 'manual'
-    cliProjectKey: 'cicds'
-    cliProjectName: 'cicd'
+    cliProjectKey: 'cicd1'
+    cliProjectName: 'cicd1'
     cliSources: 'testapp'
 - task: SonarQubeAnalyze@6
   inputs:
